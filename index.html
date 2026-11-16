@@ -1,4 +1,4 @@
-ih<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -8,7 +8,6 @@ ih<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 body{font-family:Poppins,sans-serif;background:#FFE5EC}
-
 body::before{
   content:"";
   position:fixed;
@@ -17,16 +16,16 @@ body::before{
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-  filter:blur(15px) brightness(1.05);
+  filter:blur(8px) brightness(1.05);
   transform:scale(1.1);
-  opacity:0.55;
+  opacity:0.75;
   z-index:-2;
 }
 body::after{
   content:"";
   position:fixed;
   top:0; left:0; right:0; bottom:0;
-  background:rgba(255,229,236,0.72);
+  background:rgba(255,229,236,0.45);
   z-index:-1;
 }
 .font-playfair{font-family:'Playfair Display',serif}html{scroll-behavior:smooth}
@@ -101,13 +100,13 @@ section,header{position:relative;z-index:1}
 <div class="space-y-3 text-sm">
 <div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">📍 L'Amala Florist</p><p class="text-[#7A5A4A] mt-1">Curug Wetan, Kec. Curug<br>Kab. Tangerang, Banten<br>Buka: 08.00-22.00 WIB</p></div>
 <div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">🚚 Pengiriman</p><p class="text-[#7A5A4A] mt-1">✅ Curug 10rb • Legok 20rb • Tangerang 30rb • BSD 40rb<br>✅ Ambil di toko GRATIS<br>✅ Luar Jabodetabek - Cek ongkir via WA</p></div>
-<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">💬 Customer Service</p><p class="text-[#7A5A4A] mt-1">Fast Respon 08.00-22.00 WIB</p><a href="https://wa.me/6283875905994?text=Halo%20kak,%20mau%20tanya%20tentang%20buket%20dong" target="_blank" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-full text-xs font-bold">Chat CS via WA →</a></div>
+<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">💬 Customer Service</p><p class="text-[#7A5A4A] mt-1">Fast Respon 08.00-22.00 WIB</p><a href="https://wa.me/6283875905994?text=Halo%20kak%2C%20mau%20tanya%20tentang%20buket%20dong" target="_blank" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-full text-xs font-bold">Chat CS via WA →</a></div>
 <a href="https://maps.app.goo.gl/fx3NzcgmuyJTrcnU9?g_st=aw" target="_blank" class="block bg-[#FF8FAB] text-white text-center py-3 rounded-full font-bold">📍 Buka Maps toko →</a>
 </div>
 </div>
 </div>
 </section>
-<a href="https://wa.me/6283875905994?text=Halo%20L'Amala,%20mau%20tanya%20buket" target="_blank" class="fixed bottom-5 right-5 z-[90] bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg pulse">💬</a>
+<a href="https://wa.me/6283875905994?text=Halo%20L%27Amala%2C%20mau%20tanya%20buket" target="_blank" class="fixed bottom-5 right-5 z-[90] bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg pulse">💬</a>
 <div id="cart-modal" style="display:none" class="fixed inset-0 bg-black/50 z-[100] flex justify-end">
 <div class="bg-[#FFF8F0] w-full max-w-md h-full flex flex-col">
 <div class="p-4 border-b flex justify-between items-center"><h3 class="font-bold">🛒 Keranjang (<span id="cart-count-modal">0</span>)</h3><button onclick="closeCart()" class="text-2xl">×</button></div>
@@ -156,8 +155,40 @@ function addToCart(n,p,i){let e=cart.find(x=>x.name===n);if(e)e.qty++;else cart.
 function updateCart(){document.getElementById('cart-count').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('cart-count-modal').innerText=cart.reduce((a,b)=>a+b.qty,0);let sub=cart.reduce((a,b)=>a+b.price*b.qty,0);let ov=document.getElementById('ongkir').value;let ong=ov==='luar'?0:parseInt(ov||0);let tot=sub+ong;document.getElementById('subtotal').innerText='Rp '+sub.toLocaleString('id-ID');document.getElementById('ongkir-text').innerText=ov==='luar'?'Bisa Request - Cek WA':'Rp '+ong.toLocaleString('id-ID');document.getElementById('cart-total').innerText='Rp '+tot.toLocaleString('id-ID')+(ov==='luar'?' + Ongkir':'');let c=document.getElementById('cart-items');if(cart.length===0){c.innerHTML='<p class="text-center text-gray-400 mt-10">Keranjang kosong</p>';return;}c.innerHTML=cart.map((x,j)=>`<div class="flex gap-3 bg-white p-3 rounded-xl border border-[#FFECEF]"><img src="${x.img}" onerror="this.src='${FALLBACK}'" class="w-16 h-16 object-cover rounded-lg"><div class="flex-1"><p class="text-sm font-medium leading-snug">${x.name}</p><p class="text-xs text-[#D96C8C]">Rp ${x.price.toLocaleString('id-ID')} x ${x.qty}</p><div class="flex gap-2 mt-2 items-center"><button onclick="cart[${j}].qty++;saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">+</button><span class="text-sm">${x.qty}</span><button onclick="cart[${j}].qty--;if(cart[${j}].qty<=0)cart.splice(${j},1);saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">-</button><button onclick="cart.splice(${j},1);saveCart();updateCart()" class="text-xs text-red-500 ml-2">Hapus</button></div></div></div>`).join('');}
 function openCart(){document.getElementById('cart-modal').style.display='flex';}
 function closeCart(){document.getElementById('cart-modal').style.display='none';}
-function customOrder(){let n=document.getElementById('c-nama').value;let hp=document.getElementById('c-hp').value;let j=document.getElementById('c-jenis').value;let b=document.getElementById('c-budget').value;let t=document.getElementById('c-tgl').value||'-';let c=document.getElementById('c-catatan').value||'-';if(!n||!hp){alert('Isi Nama & No WA dulu kak!');return;}let msg=`Halo L'Amala! Saya mau CUSTOM BUKET%0A%0ANama: ${n}%0AWA: ${hp}%0AJenis: ${j}%0A${b}%0ATgl Kirim: ${t}%0ACatatan: ${c}%0A%0AMohon infonya ya kak!`;window.open(`https://wa.me/6283875905994?text=${msg}`,'_blank');}
-function checkout(){if(cart.length===0){alert('Keranjang kosong!');return;}let nm=document.getElementById('nama').value;let al=document.getElementById('alamat').value;let hp=document.getElementById('hp').value;let tg=document.getElementById('tgl').value||'-';let ongSel=document.getElementById('ongkir');let ongText=ongSel.options[ongSel.selectedIndex].text;let ongVal=ongSel.value;let bayar=document.getElementById('bayar').value;if(!nm||!al||!hp){alert('Isi Nama, Alamat, No WA dulu kak!');return;}if(!ongVal){alert('Pilih ongkir dulu kak!');return;}let sub=cart.reduce((a,b)=>a+b.price*b.qty,0);let ongNum=ongVal==='luar'?0:parseInt(ongVal||0);let tot=sub+ongNum;let ps=`Halo L'Amala Florist!%0A%0ASaya mau CHECKOUT:%0A`;cart.forEach(x=>{ps+=`• ${x.name} x${x.qty} = Rp ${(x.price*x.qty).toLocaleString('id-ID')}%0A`;});ps+=`%0A--- RINCIAN BIAYA ---%0ASubtotal: Rp ${sub.toLocaleString('id-ID')}%0AOngkir: ${ongText}${ongVal!=='luar'?' - Rp '+ongNum.toLocaleString('id-ID'):''}%0A`;if(ongVal!=='luar'){ps+=`TOTAL BAYAR: Rp ${tot.toLocaleString('id-ID')}%0A%0A`;}else{ps+=`TOTAL SEMENTARA: Rp ${sub.toLocaleString('id-ID')} + Ongkir (Bisa Request)%0A%0A`;}ps+=`--- DATA PEMESAN ---%0ANama: ${nm}%0AWA: ${hp}%0AAlamat: ${al}%0ATgl Kirim: ${tg}%0APembayaran: ${bayar}%0A%0AMohon diproses ya kak!`;window.open(`https://wa.me/6283875905994?text=${ps}`,'_blank');}
+function customOrder(){
+  let n=document.getElementById('c-nama').value;
+  let hp=document.getElementById('c-hp').value;
+  let j=document.getElementById('c-jenis').value;
+  let b=document.getElementById('c-budget').value;
+  let t=document.getElementById('c-tgl').value||'-';
+  let c=document.getElementById('c-catatan').value||'-';
+  if(!n||!hp){alert('Isi Nama & No WA dulu kak!');return;}
+  let msg="Halo L'Amala! Saya mau CUSTOM BUKET\n\nNama: "+n+"\nWA: "+hp+"\nJenis: "+j+"\n"+b+"\nTgl Kirim: "+t+"\nCatatan: "+c+"\n\nMohon infonya ya kak!";
+  window.open("https://wa.me/6283875905994?text="+encodeURIComponent(msg),'_blank');
+}
+function checkout(){
+  if(cart.length===0){alert('Keranjang kosong!');return;}
+  let nm=document.getElementById('nama').value;
+  let al=document.getElementById('alamat').value;
+  let hp=document.getElementById('hp').value;
+  let tg=document.getElementById('tgl').value||'-';
+  let ongSel=document.getElementById('ongkir');
+  let ongText=ongSel.options[ongSel.selectedIndex].text;
+  let ongVal=ongSel.value;
+  let bayar=document.getElementById('bayar').value;
+  if(!nm||!al||!hp){alert('Isi Nama, Alamat, No WA dulu kak!');return;}
+  if(!ongVal){alert('Pilih ongkir dulu kak!');return;}
+  let sub=cart.reduce((a,b)=>a+b.price*b.qty,0);
+  let ongNum=ongVal==='luar'?0:parseInt(ongVal||0);
+  let tot=sub+ongNum;
+  let ps="Halo L'Amala Florist!\n\nSaya mau CHECKOUT:\n";
+  cart.forEach(x=>{ps+="• "+x.name+" x"+x.qty+" = Rp "+(x.price*x.qty).toLocaleString('id-ID')+"\n";});
+  ps+="\n--- RINCIAN BIAYA ---\nSubtotal: Rp "+sub.toLocaleString('id-ID')+"\nOngkir: "+ongText;
+  if(ongVal!=='luar'){ps+=" - Rp "+ongNum.toLocaleString('id-ID')+"\nTOTAL BAYAR: Rp "+tot.toLocaleString('id-ID')+"\n\n";}
+  else{ps+="\nTOTAL SEMENTARA: Rp "+sub.toLocaleString('id-ID')+" + Ongkir (Bisa Request)\n\n";}
+  ps+="--- DATA PEMESAN ---\nNama: "+nm+"\nWA: "+hp+"\nAlamat: "+al+"\nTgl Kirim: "+tg+"\nPembayaran: "+bayar+"\n\nMohon diproses ya kak!";
+  window.open("https://wa.me/6283875905994?text="+encodeURIComponent(ps),'_blank');
+}
 updateCart();
 </script>
 </body>
