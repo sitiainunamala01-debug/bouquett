@@ -9,39 +9,44 @@
 <style>
 body{font-family:Poppins,sans-serif;background:#FFE5EC;overflow-x:hidden}
 html,body{max-width:100%;overflow-x:hidden}
-body::before{
-  content:"";
-  position:fixed;
-  top:0; left:0; right:0; bottom:0;
-  background-image:url('background.jpg');
-  background-size:cover;
-  background-position:center top;
-  background-repeat:no-repeat;
-  opacity:0.85;
-  z-index:-2;
-}
-body::after{
-  content:"";
-  position:fixed;
-  top:0; left:0; right:0; bottom:0;
-  background:rgba(255,248,240,0.35);
-  z-index:-1;
-}
+body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-image:url('background.jpg');background-size:cover;background-position:center top;background-repeat:no-repeat;opacity:0.85;z-index:-2}
+body::after{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,248,240,0.35);z-index:-1}
 .font-playfair{font-family:'Playfair Display',serif}html{scroll-behavior:smooth}
-.hero-bucket{background:transparent}
-.hero-bucket-2{background:transparent}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 #ff8fab66}50%{box-shadow:0 0 0 14px #ff8fab00}}
 .pulse{animation:pulse 2s infinite}
-.card-anim{transition:all .3s;background:#FFF8F0;position:relative;z-index:1}
-.card-anim:hover{transform:translateY(-6px);box-shadow:0 12px 25px rgba(255,143,171,.45)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes popIn{0%{transform:scale(0.9);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes shine{0%{left:-100%}100%{left:200%}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.fade-up{animation:fadeUp .8s ease both}
+.float-anim{animation:floatY 3s ease-in-out infinite;will-change:transform}
+.pop-in{animation:popIn .5s ease both}
+.wiggle:hover{animation:wiggle .4s ease}
+.card-anim{transition:all .3s;background:#FFF8F0;position:relative;z-index:1;animation:fadeUp .6s ease both;overflow:hidden}
+.card-anim:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 25px rgba(255,143,171,.45)}
+.card-anim img{transition:transform .5s}
+.card-anim:hover img{transform:scale(1.08)}
+.btn-shine{position:relative;overflow:hidden;isolation:isolate}
+.btn-shine::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:shine 2.5s infinite;pointer-events:none}
+.marquee-track{display:flex;width:max-content;animation:marquee 18s linear infinite}
 section,header{position:relative;z-index:1}
+.hero-title{padding-top:4px;padding-bottom:4px}
+#katalog{scroll-margin-top:80px}
+#beranda{scroll-margin-top:80px}
+#custom{scroll-margin-top:80px}
+#lokasi{scroll-margin-top:80px}
 </style>
 </head>
 <body>
+<div class="bg-[#D96C8C] text-white text-center py-2 px-2 text-[12px] md:text-sm font-bold overflow-hidden">
+<div class="marquee-track"><span class="whitespace-nowrap px-2">🎉 PROMO LUAR JABODETABEK: Diskon Ongkir Rp 10.000 Pakai Kode LAMALA10 • FREE Kartu Ucapan • Harga Sudah Termasuk Wrapping Premium • 🎉 PROMO LUAR JABODETABEK: Diskon Ongkir Rp 10.000 Pakai Kode LAMALA10 • FREE Kartu Ucapan • Harga Sudah Termasuk Wrapping Premium • </span></div>
+</div>
 <header class="bg-[#FFF8F0]/95 shadow-sm sticky top-0 z-50 border-b border-[#FFC8DD]">
 <div class="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
 <a href="#beranda" class="flex items-center gap-2">
-<img src="logo.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-[#FFC8DD] bg-white" alt="L'Amala Florist">
+<img src="logo.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-[#FFC8DD] bg-white float-anim" alt="L'Amala Florist">
 <div class="leading-none"><p class="font-playfair text-xl font-bold text-[#D96C8C]">L'Amala Florist</p><p class="text-[10px] text-[#A98A7A] tracking-widest">CURUG • TANGERANG</p></div>
 </a>
 <nav class="flex gap-4 items-center text-sm">
@@ -49,44 +54,65 @@ section,header{position:relative;z-index:1}
 <a href="#katalog" class="hidden md:block text-[#7A5A4A]">Katalog</a>
 <a href="#custom" class="hidden md:block text-[#7A5A4A]">Custom Bucket</a>
 <a href="#lokasi" class="hidden md:block text-[#7A5A4A]">Lokasi</a>
-<button onclick="openCart()" class="bg-[#FF8FAB] text-white px-4 py-2 rounded-full pulse">🛒 <span id="cart-count">0</span></button>
+<button onclick="openCart()" class="bg-[#FF8FAB] text-white px-4 py-2 rounded-full pulse btn-shine">🛒 <span id="cart-count">0</span></button>
 </nav>
 </div>
 </header>
-<section id="beranda" class="hero-bucket py-20 px-4">
+<section id="beranda" class="py-20 px-4">
 <div class="max-w-6xl mx-auto text-center">
-<div class="bg-white/85 backdrop-blur rounded-3xl p-8 md:p-10 shadow-lg max-w-3xl mx-auto border border-white">
+<div class="bg-white/85 backdrop-blur rounded-3xl p-8 md:p-10 shadow-lg max-w-3xl mx-auto border border-white fade-up">
 <span class="bg-[#FFE5EC] px-4 py-1.5 rounded-full text-xs shadow inline-block text-[#7A5A4A]">🌸 aesthetic • handmade • premium quality •</span>
-<h2 class="font-playfair text-4xl md:text-5xl font-bold mt-6 leading-tight text-[#5C3A3A]">Bucket Cantik<br><span class="text-[#D96C8C]">Aesthetic Kekinian</span></h2>
+<h2 class="font-playfair text-4xl md:text-5xl font-bold mt-6 leading-tight text-[#5C3A3A] hero-title">Bucket Cantik<br><span class="text-[#D96C8C]">Aesthetic Kekinian</span></h2>
 <p class="text-[#7A5A4A] mt-4 max-w-2xl mx-auto text-sm">Pengiriman Same Day Jabodetabek | Artificial, Snack & Money Bucket bisa kirim luar Jabodetabek</p>
-<div class="mt-8 flex flex-wrap justify-center gap-3">
-<a href="#katalog" class="bg-[#FF8FAB] text-white px-8 py-3 rounded-full text-sm font-bold shadow">Lihat Katalog ↓</a>
-<a href="#custom" class="bg-[#FFF8F0] border border-[#FFC8DD] px-8 py-3 rounded-full text-sm font-bold text-[#7A5A4A]">✨ Custom Bucket</a>
+<div class="mt-3 bg-[#FFE5EC] rounded-xl p-3 text-[12px] text-[#5C3A3A] font-medium">💡 Harga Sudah Termasuk: Bunga + Wrapping Premium + Kartu Ucapan + Packing Aman<br><span class="text-[#D96C8C] font-bold">🎉 Luar Jabodetabek? Diskon Ongkir Rp 10.000 Pakai Kode LAMALA10!</span></div>
+<div class="mt-6 flex flex-wrap justify-center gap-3">
+<a href="#katalog" class="bg-[#FF8FAB] text-white px-8 py-3 rounded-full text-sm font-bold shadow btn-shine">Lihat Katalog ↓</a>
+<a href="#custom" class="bg-[#FFF8F0] border border-[#FFC8DD] px-8 py-3 rounded-full text-sm font-bold text-[#7A5A4A] wiggle">✨ Custom Bucket</a>
 </div>
 <div class="mt-6 flex justify-center gap-2 flex-wrap text-[11px]">
-<span class="bg-white px-3 py-1 rounded-full shadow-sm">⭐ 4.8 / 5 dari 30+ Review</span>
-<span class="bg-white px-3 py-1 rounded-full shadow-sm">✅ 100+ Bucket Terkirim</span>
-<span class="bg-white px-3 py-1 rounded-full shadow-sm">🚚 Same Day</span>
+<span class="bg-white px-3 py-1 rounded-full shadow-sm pop-in">⭐ 4.8 / 5 dari 30+ Review</span>
+<span class="bg-white px-3 py-1 rounded-full shadow-sm pop-in">✅ 100+ Bucket Terkirim</span>
+<span class="bg-white px-3 py-1 rounded-full shadow-sm pop-in">🚚 Same Day</span>
 </div>
 </div>
 </div>
 </section>
 <section id="katalog" class="max-w-6xl mx-auto px-4 py-14">
-<div class="text-center mb-8"><h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">Katalog Bucket</h3><p class="text-sm text-[#A98A7A] mt-2">Pilih → + Keranjang → Isi Ongkir & Bayar → WA</p></div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="katalog-grid"></div>
+<div class="text-center mb-8 fade-up">
+<h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">Katalog Bucket</h3>
+<p class="text-sm text-[#7A5A4A] mt-2 pop-in">Pilih → + Keranjang → Isi Ongkir & Bayar → WA</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="katalog-grid">
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Mawar Pink Mix Putih"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Mawar Pink Mix Putih</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 185.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Mawar Pink Mix Putih',185000,'foto1.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Lily Putih"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Lily Putih</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 250.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Lily Putih',250000,'foto2.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Lily Pink"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Lily Pink</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 265.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Lily Pink',265000,'foto3.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto4.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Sunflower"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Sunflower</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 195.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Sunflower',195000,'foto4.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto5.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Uang"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Uang</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 400.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Uang',400000,'foto5.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto6.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Uang + Bunga"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Uang + Bunga</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 450.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Uang + Bunga',450000,'foto6.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto7.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Artificial"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Artificial</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 145.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Artificial',145000,'foto7.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto8.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Snack Pink"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Snack Pink</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 150.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Snack Pink',150000,'foto8.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto9.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Snack Mix Uang"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Snack Mix Uang</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 200.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Snack Mix Uang',200000,'foto9.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto10.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Silverqueen"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Silverqueen</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 175.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Silverqueen',175000,'foto10.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto11.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Wisuda"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Wisuda</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 230.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Wisuda',230000,'foto11.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto12.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Mawar Merah"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Mawar Merah</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 400.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Mawar Merah',400000,'foto12.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto13.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Lily + Mawar"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Lily + Mawar</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 285.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Lily + Mawar',285000,'foto13.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto14.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Uang Mini"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Uang Mini</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 200.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Uang Mini',250000,'foto14.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto15.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Gift Snack Box"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Gift Snack Box</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 85.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Gift Snack Box',85000,'foto15.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><img src="foto16.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" class="w-full h-48 object-cover" alt="Bucket Bunga Kawat Bulu"><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Bunga Kawat Bulu</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 135.000</p><p class="text-[10px] text-[#A98A7A]">Sudah termasuk wrapping + kartu ucapan</p><button onclick="addToCart('Bucket Bunga Kawat Bulu',135000,'foto16.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
+</div>
 </section>
 <section id="custom" class="max-w-6xl mx-auto px-4 pb-14">
-<div class="hero-bucket-2 rounded-3xl shadow-sm p-6 md:p-8 border border-white">
-<div class="bg-white/85 rounded-2xl p-5">
+<div class="rounded-3xl shadow-sm p-6 md:p-8 border border-white">
+<div class="bg-white/85 rounded-2xl p-5 fade-up">
 <div class="text-center mb-6"><h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">✨ Formulir Custom Bucket</h3><p class="text-sm text-[#7A5A4A] mt-2">Mau bucket sesuai request kamu? Isi form ini, langsung ke WA admin!</p></div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
 <input id="c-nama" placeholder="Nama Kamu *" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full">
 <input id="c-hp" placeholder="No WA *" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full">
-<select id="c-jenis" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full"><option>Bucket Bunga Artificial</option><option>Bucket Snack</option><option>Bucket Uang</option><option>Bucket Wisuda</option><option>Bucket Mix / Lainnya</option></select>
+<select id="c-jenis" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full"><option>Bucket Bunga Artificial</option><option>Bucket Snack</option><option>Bucket Uang</option><option>Bucket Wisuda</option><option>Bucket Bunga Kawat Bulu</option><option>Bucket Mix / Lainnya</option></select>
 <select id="c-budget" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full"><option>Budget: Rp 100rb - 200rb</option><option>Budget: Rp 200rb - 350rb</option><option>Budget: Rp 350rb - 500rb</option><option>Budget: Bebas / Request</option></select>
 <input id="c-tgl" type="date" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm md:col-span-2 w-full">
 <textarea id="c-catatan" placeholder="Ceritain mau warna apa, tulisan di kartu ucapan apa, dll..." class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm md:col-span-2 h-20 w-full"></textarea>
-<button onclick="customOrder()" class="md:col-span-2 bg-[#FF8FAB] text-white py-3.5 rounded-full font-bold text-sm w-full">💬 Kirim Request Custom via WA →</button>
+<button onclick="customOrder()" class="md:col-span-2 bg-[#FF8FAB] text-white py-3.5 rounded-full font-bold text-sm w-full btn-shine">💬 Kirim Request Custom via WA →</button>
 </div>
 </div>
 </div>
@@ -95,17 +121,23 @@ section,header{position:relative;z-index:1}
 <div class="max-w-6xl mx-auto">
 <div class="text-center mb-8"><h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">Lokasi Toko & Customer Service</h3><p class="text-sm text-[#A98A7A] mt-2">Bisa ambil di toko, kirim Jabodetabek, atau request luar daerah!</p></div>
 <div class="grid md:grid-cols-2 gap-6 bg-[#FFE5EC] p-6 rounded-3xl border border-[#FFC8DD]">
-<div><iframe src="https://maps.google.com/maps?q=Curug+Wetan,+Curug,+Tangerang,+Banten&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="280" style="border:0;border-radius:16px;" loading="lazy"></iframe></div>
+<div class="bg-white p-5 rounded-2xl text-center">
+<iframe src="https://maps.google.com/maps?q=Curug%20Wetan%2C%20Kec.%20Curug%2C%20Kab.%20Tangerang%2C%20Banten&t=&z=15&ie=UTF8&iwloc=&output=embed" class="w-full h-[220px] rounded-xl border border-[#FFC8DD] mb-3" loading="lazy"></iframe>
+<p class="text-5xl"></p>
+<p class="font-bold text-[#5C3A3A] text-lg mt-2">L'Amala Florist</p>
+<p class="text-[#7A5A4A] text-sm mt-1">Curug Wetan, Kec. Curug<br>Kab. Tangerang, Banten<br>Buka: 08.00-22.00 WIB</p>
+<a href="https://maps.app.goo.gl/fx3NzcgmuyJTrcnU9?g_st=aw" target="_blank" class="inline-block mt-4 bg-[#FF8FAB] text-white px-6 py-3 rounded-full font-bold text-sm">📍 Buka Maps Toko →</a>
+<p class="text-[11px] text-[#A98A7A] mt-3">Klik tombol di atas untuk buka Google Maps</p>
+</div>
 <div class="space-y-3 text-sm">
-<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">📍 L'Amala Florist</p><p class="text-[#7A5A4A] mt-1">Curug Wetan, Kec. Curug<br>Kab. Tangerang, Banten<br>Buka: 08.00-22.00 WIB</p></div>
-<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">🚚 Pengiriman</p><p class="text-[#7A5A4A] mt-1">✅ Curug 10rb • Legok 20rb • Tangerang 30rb • BSD 40rb<br>✅ Ambil di toko GRATIS<br>✅ Luar Jabodetabek - Cek ongkir via WA</p></div>
+<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">🚚 Pengiriman & Promo</p><p class="text-[#7A5A4A] mt-1">✅ Curug Wetan 5rb • Binong 15rb • Legok 20rb • Cikupa 25rb • Tangerang 30rb • BSD 35rb<br>✅ Ambil di toko GRATIS<br>✅ <b>Luar Jabodetabek - Diskon Ongkir Rp 10rb Pakai Kode LAMALA10!</b><br>✅ Cek ongkir via WA - Admin bantu cari ekspedisi termurah!</p></div>
 <div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">💬 Customer Service</p><p class="text-[#7A5A4A] mt-1">Fast Respon 08.00-22.00 WIB</p><a href="https://wa.me/6283875905994?text=Halo%20kak%2C%20mau%20tanya%20tentang%20bucket%20dong" target="_blank" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-full text-xs font-bold">Chat CS via WA →</a></div>
-<a href="https://maps.app.goo.gl/fx3NzcgmuyJTrcnU9?g_st=aw" target="_blank" class="block bg-[#FF8FAB] text-white text-center py-3 rounded-full font-bold">📍 Buka Maps toko →</a>
+<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">⏰ Jam Buka</p><p class="text-[#7A5A4A] mt-1">Senin - Minggu: 08.00 - 22.00 WIB<br>Same Day Jabodetabek, order sebelum jam 15.00 ya kak!</p></div>
 </div>
 </div>
 </div>
-</section>
-<a href="https://wa.me/6283875905994?text=Halo%20L%27Amala%2C%20mau%20tanya%20bucket" target="_blank" class="fixed bottom-24 right-5 z-[90] bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg pulse">💬</a>
+  </section>
+  <a href="https://wa.me/6283875905994?text=Halo%20L%27Amala%2C%20mau%20tanya%20bucket" target="_blank" class="fixed bottom-5 right-5 z-[90] bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg pulse">💬</a>
 <div id="cart-modal" style="display:none" class="fixed inset-0 bg-black/50 z-[100] flex justify-end">
 <div class="bg-[#FFF8F0] w-full max-w-md h-full flex flex-col">
 <div class="p-4 border-b flex justify-between items-center"><h3 class="font-bold">🛒 Keranjang (<span id="cart-count-modal">0</span>)</h3><button onclick="closeCart()" class="text-2xl">×</button></div>
@@ -116,79 +148,97 @@ section,header{position:relative;z-index:1}
 <input id="alamat" placeholder="Alamat Lengkap *" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white">
 <input id="tgl" type="date" class="w-full border p-2.5 rounded-xl text-sm mb-3 bg-white">
 <label class="text-xs font-bold">📦 Ongkir:</label>
-<select id="ongkir" onchange="updateCart()" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white"><option value="">Pilih Area Kirim</option><option value="10000">Curug Wetan - Rp 10.000</option><option value="15000">Curug Kulon / Binong - Rp 15.000</option><option value="20000">Legok / Kelapa Dua - Rp 20.000</option><option value="25000">Cikupa / Panongan - Rp 25.000</option><option value="30000">Tangerang Kota - Rp 30.000</option><option value="40000">BSD / Gading Serpong - Rp 40.000</option><option value="0">Ambil di toko (Gratis)</option><option value="luar">🚚 Luar Jabodetabek (Cek WA)</option></select>
+<select id="ongkir" onchange="updateCart()" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white"><option value="">Pilih Area Kirim</option><option value="5000">Curug Wetan - Rp 5.000</option><option value="15000">Curug Kulon / Binong - Rp 15.000</option><option value="20000">Legok / Kelapa Dua - Rp 20.000</option><option value="25000">Cikupa / Panongan - Rp 25.000</option><option value="30000">Tangerang Kota - Rp 30.000</option><option value="35000">BSD / Gading Serpong - Rp 35.000</option><option value="0">Ambil di toko (Gratis)</option><option value="luar">🚚 Luar Jabodetabek</option></select>
+<div class="bg-white border border-dashed border-[#D96C8C] p-2.5 rounded-xl text-center mb-2">
+<p class="text-[12px] font-bold text-[#D96C8C]">🎉 DISKON ONGKIR Rp 10.000</p>
+<p class="text-[11px] text-[#7A5A4A]">Khusus Luar Jabodetabek - Masukin kode di bawah!</p>
+</div>
+<label class="text-xs font-bold">🎟️ Kode Promo:</label>
+<div class="flex gap-2 mb-1"><input id="promo" placeholder="Masukin kode: LAMALA10" class="flex-1 border p-2.5 rounded-xl text-sm bg-white"><button onclick="applyPromo()" class="bg-[#D96C8C] text-white px-4 rounded-xl text-xs font-bold">Pakai</button></div>
+<p id="promo-msg" class="text-[11px] text-[#D96C8C] font-bold mb-2">Kode: LAMALA10</p>
 <label class="text-xs font-bold">💳 Metode Pembayaran:</label>
 <select id="bayar" class="w-full border p-2.5 rounded-xl text-sm mb-3 bg-white"><option>Transfer BCA</option><option>Transfer Mandiri</option><option>DANA / OVO / GoPay</option><option>COD Bayar di Tempat</option></select>
-<div class="bg-white p-3 rounded-xl text-sm space-y-1 mb-3"><div class="flex justify-between"><span>Subtotal Bucket:</span><span id="subtotal">Rp 0</span></div><div class="flex justify-between"><span>Ongkir:</span><span id="ongkir-text">Rp 0</span></div><div class="flex justify-between font-bold border-t pt-1"><span>Total Bayar:</span><span id="cart-total" class="text-[#D96C8C] text-base">Rp 0</span></div></div>
-<button onclick="checkout()" class="w-full bg-[#FF8FAB] text-white py-3 rounded-full text-sm font-bold pulse">✅ Buat Pesanan & Checkout via WA →</button>
+<div class="bg-white p-3 rounded-xl text-sm space-y-1 mb-3"><div class="flex justify-between"><span>Subtotal Bucket:</span><span id="subtotal">Rp 0</span></div><div class="flex justify-between"><span>Ongkir:</span><span id="ongkir-text">Rp 0</span></div><div class="flex justify-between text-green-600 font-bold"><span>Diskon Promo:</span><span id="diskon-text">- Rp 0</span></div><div class="flex justify-between font-bold border-t pt-1"><span>Total Bayar:</span><span id="cart-total" class="text-[#D96C8C] text-base">Rp 0</span></div></div>
+<button onclick="checkout()" class="w-full bg-[#FF8FAB] text-white py-3 rounded-full text-sm font-bold pulse btn-shine">✅ Buat Pesanan & Checkout via WA →</button>
 <button onclick="closeCart()" class="w-full mt-2 bg-white border py-2.5 rounded-full text-sm">Lanjut Belanja</button>
 </div>
 </div>
 </div>
 <script>
-const FALLBACK='https://placehold.co/600x600/FFE5EC/D96C8C?text=L%27Amala+Florist';
-const products=[
-['Bucket Mawar Pink Mix Putih',185000,'foto1.jpg'],
-['Bucket Lily Putih',250000,'foto2.jpg'],
-['Bucket Lily Pink',265000,'foto3.jpg'],
-['Bucket Sunflower',195000,'foto4.jpg'],
-['Bucket Uang',400000,'foto5.jpg'],
-['Bucket Uang + bunga',450000,'foto6.jpg'],
-['Bucket Artificial',145000,'foto7.jpg'],
-['Bucket Snack Pink',150000,'foto8.jpg'],
-['Bucket Snack Mix Uang',200000,'foto9.jpg'],
-['Bucket Silverqueen',175000,'foto10.jpg'],
-['Bucket Wisuda',230000,'foto11.jpg'],
-['Bucket Mawar Merah',400000,'foto12.jpg'],
-['Bucket Lily+Mawar',285000,'foto13.jpg'],
-['Bucket uang',250000,'foto14.jpg'],
-['Gift snack box',85000,'foto15.jpg'],
-];
-document.getElementById('katalog-grid').innerHTML=products.map(p=>`
-<div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]">
-<img src="${p[2]}" onerror="this.onerror=null;this.src='${FALLBACK}'" loading="lazy" class="w-full h-48 object-cover" alt="${p[0]}">
-<div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">${p[0]}</h4><p class="font-bold text-[#D96C8C] text-sm">Rp ${p[1].toLocaleString('id-ID')}</p><button onclick="addToCart('${p[0]}',${p[1]},'${p[2]}')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs">+ Keranjang</button></div></div>`).join('');
-let cart=JSON.parse(localStorage.getItem('lamala_cart')||'[]');
-function saveCart(){localStorage.setItem('lamala_cart',JSON.stringify(cart));}
-function addToCart(n,p,i){let e=cart.find(x=>x.name===n);if(e)e.qty++;else cart.push({name:n,price:p,img:i,qty:1});saveCart();updateCart();openCart();}
-function updateCart(){document.getElementById('cart-count').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('cart-count-modal').innerText=cart.reduce((a,b)=>a+b.qty,0);let sub=cart.reduce((a,b)=>a+b.price*b.qty,0);let ov=document.getElementById('ongkir').value;let ong=ov==='luar'?0:parseInt(ov||0);let tot=sub+ong;document.getElementById('subtotal').innerText='Rp '+sub.toLocaleString('id-ID');document.getElementById('ongkir-text').innerText=ov==='luar'?'Bisa Request - Cek WA':'Rp '+ong.toLocaleString('id-ID');document.getElementById('cart-total').innerText='Rp '+tot.toLocaleString('id-ID')+(ov==='luar'?' + Ongkir':'');let c=document.getElementById('cart-items');if(cart.length===0){c.innerHTML='<p class="text-center text-gray-400 mt-10">Keranjang kosong</p>';return;}c.innerHTML=cart.map((x,j)=>`<div class="flex gap-3 bg-white p-3 rounded-xl border border-[#FFECEF]"><img src="${x.img}" onerror="this.src='${FALLBACK}'" class="w-16 h-16 object-cover rounded-lg"><div class="flex-1"><p class="text-sm font-medium leading-snug">${x.name}</p><p class="text-xs text-[#D96C8C]">Rp ${x.price.toLocaleString('id-ID')} x ${x.qty}</p><div class="flex gap-2 mt-2 items-center"><button onclick="cart[${j}].qty++;saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">+</button><span class="text-sm">${x.qty}</span><button onclick="cart[${j}].qty--;if(cart[${j}].qty<=0)cart.splice(${j},1);saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">-</button><button onclick="cart.splice(${j},1);saveCart();updateCart()" class="text-xs text-red-500 ml-2">Hapus</button></div></div></div>`).join('');}
-function openCart(){document.getElementById('cart-modal').style.display='flex';}
-function closeCart(){document.getElementById('cart-modal').style.display='none';}
+var FALLBACK="https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist";
+var cart=[];
+try{cart=JSON.parse(localStorage.getItem("lamala_cart")||"[]");}catch(e){cart=[];}
+var diskon=0;
+function saveCart(){try{localStorage.setItem("lamala_cart",JSON.stringify(cart));}catch(e){}}
+function addToCart(n,p,i){var e=null;for(var k=0;k<cart.length;k++){if(cart[k].name===n){e=cart[k];break;}}if(e){e.qty++;}else{cart.push({name:n,price:p,img:i,qty:1});}saveCart();updateCart();openCart();}
+function applyPromo(){
+var v=document.getElementById("promo").value.trim().toUpperCase();
+var ongVal=document.getElementById("ongkir").value;
+if(v==="LAMALA10"){
+if(ongVal!=="luar"){document.getElementById("promo-msg").innerText="Kode ini khusus untuk Luar Jabodetabek ya kak! Pilih Luar Jabodetabek dulu.";diskon=0;}
+else{document.getElementById("promo-msg").innerText="Yeay! Berhasil! Diskon Rp 10.000 langsung kepotong!";diskon=10000;}
+} else if(v===""){document.getElementById("promo-msg").innerText="Masukin kode LAMALA10 ya kak!";diskon=0;}
+else{document.getElementById("promo-msg").innerText="Kode salah, coba LAMALA10";diskon=0;}
+updateCart();
+}
+function updateCart(){
+var totalQty=0;for(var i=0;i<cart.length;i++){totalQty+=cart[i].qty;}
+document.getElementById("cart-count").innerText=totalQty;
+document.getElementById("cart-count-modal").innerText=totalQty;
+var sub=0;for(var j=0;j<cart.length;j++){sub+=cart[j].price*cart[j].qty;}
+var ov=document.getElementById("ongkir").value;
+var ong=ov==="luar"?0:parseInt(ov||0);
+if(ov!=="luar")diskon=0;
+var tot=sub+ong-diskon;if(tot<0)tot=0;
+document.getElementById("subtotal").innerText="Rp "+sub.toLocaleString("id-ID");
+document.getElementById("ongkir-text").innerText=ov==="luar"?"Cek WA (Pakai Kode LAMALA10)":"Rp "+ong.toLocaleString("id-ID");
+document.getElementById("diskon-text").innerText="- Rp "+diskon.toLocaleString("id-ID");
+document.getElementById("cart-total").innerText="Rp "+tot.toLocaleString("id-ID")+(ov==="luar"?" + Ongkir (Pakai Kode)":"");
+var c=document.getElementById("cart-items");
+if(cart.length===0){c.innerHTML='<p class="text-center text-gray-400 mt-10">Keranjang kosong</p>';return;}
+var html="";
+for(var x=0;x<cart.length;x++){
+html+='<div class="flex gap-3 bg-white p-3 rounded-xl border border-[#FFECEF]"><img src="'+cart[x].img+'" onerror="this.src=\''+FALLBACK+'\'" class="w-16 h-16 object-cover rounded-lg"><div class="flex-1"><p class="text-sm font-medium leading-snug">'+cart[x].name+'</p><p class="text-xs text-[#D96C8C]">Rp '+cart[x].price.toLocaleString("id-ID")+' x '+cart[x].qty+'</p><div class="flex gap-2 mt-2 items-center"><button onclick="cart['+x+'].qty++;saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">+</button><span class="text-sm">'+cart[x].qty+'</span><button onclick="cart['+x+'].qty--;if(cart['+x+'].qty<=0)cart.splice('+x+',1);saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">-</button><button onclick="cart.splice('+x+',1);saveCart();updateCart()" class="text-xs text-red-500 ml-2">Hapus</button></div></div></div>';
+}
+c.innerHTML=html;
+}
+function openCart(){document.getElementById("cart-modal").style.display="flex";}
+function closeCart(){document.getElementById("cart-modal").style.display="none";}
 function customOrder(){
-  let n=document.getElementById('c-nama').value;
-  let hp=document.getElementById('c-hp').value;
-  let j=document.getElementById('c-jenis').value;
-  let b=document.getElementById('c-budget').value;
-  let t=document.getElementById('c-tgl').value||'-';
-  let c=document.getElementById('c-catatan').value||'-';
-  if(!n||!hp){alert('Isi Nama & No WA dulu kak!');return;}
-  let msg="Halo L'Amala! Saya mau CUSTOM BUCKET\n\nNama: "+n+"\nWA: "+hp+"\nJenis: "+j+"\n"+b+"\nTgl Kirim: "+t+"\nCatatan: "+c+"\n\nMohon infonya ya kak!";
-  window.open("https://wa.me/6283875905994?text="+encodeURIComponent(msg),'_blank');
+var n=document.getElementById("c-nama").value;
+var hp=document.getElementById("c-hp").value;
+var j=document.getElementById("c-jenis").value;
+var b=document.getElementById("c-budget").value;
+var t=document.getElementById("c-tgl").value||"-";
+var c=document.getElementById("c-catatan").value||"-";
+if(!n||!hp){alert("Isi Nama & No WA dulu kak!");return;}
+var msg="Halo LAmala! Saya mau CUSTOM BUCKET\n\nNama: "+n+"\nWA: "+hp+"\nJenis: "+j+"\n"+b+"\nTgl Kirim: "+t+"\nCatatan: "+c+"\n\nMohon infonya ya kak!";
+window.open("https://wa.me/6283875905994?text="+encodeURIComponent(msg),"_blank");
 }
 function checkout(){
-  if(cart.length===0){alert('Keranjang kosong!');return;}
-  let nm=document.getElementById('nama').value;
-  let al=document.getElementById('alamat').value;
-  let hp=document.getElementById('hp').value;
-  let tg=document.getElementById('tgl').value||'-';
-  let ongSel=document.getElementById('ongkir');
-  let ongText=ongSel.options[ongSel.selectedIndex].text;
-  let ongVal=ongSel.value;
-  let bayar=document.getElementById('bayar').value;
-  if(!nm||!al||!hp){alert('Isi Nama, Alamat, No WA dulu kak!');return;}
-  if(!ongVal){alert('Pilih ongkir dulu kak!');return;}
-  let sub=cart.reduce((a,b)=>a+b.price*b.qty,0);
-  let ongNum=ongVal==='luar'?0:parseInt(ongVal||0);
-  let tot=sub+ongNum;
-  let ps="Halo L'Amala Florist!\n\nSaya mau CHECKOUT:\n";
-  cart.forEach(x=>{ps+="• "+x.name+" x"+x.qty+" = Rp "+(x.price*x.qty).toLocaleString('id-ID')+"\n";});
-  ps+="\n--- RINCIAN BIAYA ---\nSubtotal: Rp "+sub.toLocaleString('id-ID')+"\nOngkir: "+ongText;
-  if(ongVal!=='luar'){ps+=" - Rp "+ongNum.toLocaleString('id-ID')+"\nTOTAL BAYAR: Rp "+tot.toLocaleString('id-ID')+"\n\n";}
-  else{ps+="\nTOTAL SEMENTARA: Rp "+sub.toLocaleString('id-ID')+" + Ongkir (Bisa Request)\n\n";}
-  ps+="--- DATA PEMESAN ---\nNama: "+nm+"\nWA: "+hp+"\nAlamat: "+al+"\nTgl Kirim: "+tg+"\nPembayaran: "+bayar+"\n\nMohon diproses ya kak!";
-  window.open("https://wa.me/6283875905994?text="+encodeURIComponent(ps),'_blank');
+if(cart.length===0){alert("Keranjang kosong!");return;}
+var nm=document.getElementById("nama").value;
+var al=document.getElementById("alamat").value;
+var hp=document.getElementById("hp").value;
+var tg=document.getElementById("tgl").value||"-";
+var ongSel=document.getElementById("ongkir");
+var ongText=ongSel.options[ongSel.selectedIndex].text;
+var ongVal=ongSel.value;
+var bayar=document.getElementById("bayar").value;
+if(!nm||!al||!hp){alert("Isi Nama, Alamat, No WA dulu kak!");return;}
+if(!ongVal){alert("Pilih ongkir dulu kak!");return;}
+var sub=0;for(var i=0;i<cart.length;i++){sub+=cart[i].price*cart[i].qty;}
+var ongNum=ongVal==="luar"?0:parseInt(ongVal||0);
+var tot=sub+ongNum-diskon;if(tot<0)tot=0;
+var ps="Halo LAmala Florist!\n\nSaya mau CHECKOUT:\n";
+for(var k=0;k<cart.length;k++){ps+="• "+cart[k].name+" x"+cart[k].qty+" = Rp "+(cart[k].price*cart[k].qty).toLocaleString("id-ID")+"\n";}
+ps+="\n--- RINCIAN BIAYA ---\nSubtotal: Rp "+sub.toLocaleString("id-ID")+"\nOngkir: "+ongText;
+if(ongVal!=="luar"){ps+=" - Rp "+ongNum.toLocaleString("id-ID")+"\nDiskon: Rp 0\nTOTAL BAYAR: Rp "+tot.toLocaleString("id-ID")+"\n\n";}
+else{ps+="\nDiskon Ongkir (LAMALA10): - Rp "+diskon.toLocaleString("id-ID")+"\nTOTAL SEMENTARA: Rp "+sub.toLocaleString("id-ID")+" + Ongkir (Sudah Diskon)\n\n";}
+ps+="--- DATA PEMESAN ---\nNama: "+nm+"\nWA: "+hp+"\nAlamat: "+al+"\nTgl Kirim: "+tg+"\nPembayaran: "+bayar+"\n\nMohon diproses ya kak!";
+window.open("https://wa.me/6283875905994?text="+encodeURIComponent(ps),"_blank");
 }
 updateCart();
 </script>
 </body>
-                                                                                                                    </html>
+</html>
