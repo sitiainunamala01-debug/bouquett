@@ -104,3 +104,180 @@ section,header{position:relative;z-index:1}
 <div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><div class="relative"><img src="foto16.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" decoding="async" class="w-full h-48 object-cover" alt="Bucket Bunga Kawat Bulu"></div><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Bunga Kawat Bulu</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 135.000</p><p class="text-[10px] font-bold text-green-600 mt-1">✅ Bisa Kirim Luar</p><button onclick="addToCart('Bucket Bunga Kawat Bulu',135000,'foto16.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
 </div>
 </section>
+  <section id="custom" class="max-w-6xl mx-auto px-4 pb-14">
+<div class="rounded-3xl shadow-sm p-6 md:p-8 border border-white">
+<div class="bg-white/85 rounded-2xl p-5 fade-up">
+<div class="text-center mb-6"><h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">✨ Formulir Custom Bucket</h3><p class="text-sm text-[#7A5A4A] mt-2">Mau bucket sesuai request kamu? Isi form ini, langsung ke WA admin!</p></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<input id="c-nama" placeholder="Nama Kamu *" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full">
+<input id="c-hp" placeholder="No WA *" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full">
+<select id="c-jenis" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full"><option>Bucket Bunga Artificial</option><option>Bucket Snack</option><option>Bucket Uang</option><option>Bucket Wisuda</option><option>Bucket Bunga Kawat Bulu</option><option>Bucket Mix / Lainnya</option></select>
+<select id="c-budget" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm w-full"><option>Budget: Rp 100rb - 200rb</option><option>Budget: Rp 200rb - 350rb</option><option>Budget: Rp 350rb - 500rb</option><option>Budget: Bebas / Request</option></select>
+<input id="c-tgl" type="date" class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm md:col-span-2 w-full">
+<textarea id="c-catatan" placeholder="Ceritain mau warna apa, tulisan di kartu ucapan apa, dll..." class="border border-[#FFC8DD] bg-[#FFF8F0] p-3 rounded-xl text-sm md:col-span-2 h-20 w-full"></textarea>
+<button onclick="customOrder()" class="md:col-span-2 w-full bg-[#FF8FAB] text-white py-3 rounded-full text-sm font-bold btn-shine">✨ Kirim Request Custom via WA →</button>
+</div>
+</div>
+</div>
+</section>
+<section id="lokasi" class="bg-[#FFF8F0] py-14 px-4 border-t border-[#FFC8DD]">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-8"><h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">Lokasi Toko & Customer Service</h3><p class="text-sm text-[#A98A7A] mt-2">Bisa ambil di toko, kirim Jabodetabek, atau request luar daerah!</p></div>
+<div class="grid md:grid-cols-2 gap-6 bg-[#FFE5EC] p-6 rounded-3xl border border-[#FFC8DD]">
+<div class="bg-white p-5 rounded-2xl text-center">
+<iframe src="https://maps.google.com/maps?q=L%27Amala%20Florist%20Curug%20Wetan%2C%20Kec.%20Curug%2C%20Kab.%20Tangerang%2C%20Banten&t=&z=16&ie=UTF8&iwloc=&output=embed" class="w-full h-[220px] rounded-xl border border-[#FFC8DD] mb-3" loading="lazy"></iframe>
+<p class="font-bold text-[#5C3A3A] text-lg mt-2">L'Amala Florist</p>
+<p class="text-[#7A5A4A] text-sm mt-1">Curug Wetan, Kec. Curug<br>Kab. Tangerang, Banten<br>Buka: 08.00-22.00 WIB</p>
+<a href="https://www.google.com/maps/search/?api=1&query=L%27Amala+Florist+Curug+Wetan+Kec.+Curug+Kab.+Tangerang+Banten" target="_blank" class="inline-block mt-4 bg-[#FF8FAB] text-white px-6 py-3 rounded-full font-bold text-sm">📍 Buka Maps Toko →</a>
+<p class="text-[11px] text-[#A98A7A] mt-3">Klik tombol di atas untuk buka Google Maps</p>
+</div>
+<div class="space-y-3 text-sm">
+<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">🚚 Pengiriman & Packing Aman</p><p class="text-[#7A5A4A] mt-1">✅ <b>Curug Wetan 5rb • Binong 15rb • Legok 20rb • Cikupa 25rb • Tangerang 30rb • BSD 35rb</b><br>✅ Ambil di toko GRATIS<br>✅ <b>Luar Jabodetabek - Diskon Ongkir Rp 10rb Pakai Kode LAMALA10!</b><br>📦 <b>Packing Luar: Bubble Wrap 2 lapis + Kardus + Stiker FRAGILE</b><br>⚠️ Bunga Segar hanya Jabodetabek, biar gak layu di jalan!</p></div>
+<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">💬 Customer Service</p><p class="text-[#7A5A4A] mt-1">Fast Respon 08.00-22.00 WIB</p><a href="https://wa.me/6283875905994?text=Halo%20kak%2C%20mau%20tanya%20tentang%20bucket%20dong" target="_blank" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-full text-xs font-bold">Chat CS via WA →</a></div>
+<div class="bg-white p-4 rounded-2xl"><p class="font-bold text-[#5C3A3A]">⏰ Jam Buka</p><p class="text-[#7A5A4A] mt-1">Senin - Minggu: 08.00 - 22.00 WIB<br>Same Day Jabodetabek, order sebelum jam 15.00 ya kak!</p></div>
+</div>
+</div>
+</div>
+</section>
+<a href="https://wa.me/6283875905994?text=Halo%20L%27Amala%2C%20mau%20tanya%20bucket" target="_blank" class="fixed bottom-5 right-5 z-[90] bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg pulse">💬</a>
+<div id="cart-modal" style="display:none" class="fixed inset-0 bg-black/50 z-[100] flex justify-end">
+<div class="bg-[#FFF8F0] w-full max-w-md h-full flex flex-col">
+<div class="p-4 border-b flex justify-between items-center"><h3 class="font-bold">🛒 Keranjang (<span id="cart-count-modal">0</span>)</h3><button onclick="closeCart()" class="text-2xl">×</button></div>
+<div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+<div class="p-4 border-t bg-[#FFE5EC] max-h-[70vh] overflow-y-auto">
+<div class="bg-yellow-50 border border-yellow-200 p-2.5 rounded-xl text-[11px] mb-2 text-[#7A5A4A]">⚠️ <b>Ingat ya kak:</b> Yang label <b class="text-red-500">🚫 Khusus Jabodetabek</b> itu bunga segar, gak bisa kirim jauh biar gak layu. Yang label <b class="text-green-600">✅ Bisa Kirim Luar</b> aman kirim ke seluruh Indonesia!</div>
+<input id="nama" placeholder="Nama Pemesan *" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white">
+<input id="hp" placeholder="No WA Aktif *" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white">
+<input id="alamat" placeholder="Alamat Lengkap *" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white">
+<input id="tgl" type="date" class="w-full border p-2.5 rounded-xl text-sm mb-3 bg-white">
+<label class="text-xs font-bold">📦 Ongkir:</label>
+<select id="ongkir" onchange="updateCart()" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white"><option value="">Pilih Area Kirim</option><option value="5000">Curug Wetan - Rp 5.000</option><option value="15000">Curug Kulon / Binong - Rp 15.000</option><option value="20000">Legok / Kelapa Dua - Rp 20.000</option><option value="25000">Cikupa / Panongan - Rp 25.000</option><option value="30000">Tangerang Kota - Rp 30.000</option><option value="35000">BSD / Gading Serpong - Rp 35.000</option><option value="0">Ambil di toko (Gratis)</option><option value="luar">🚚 Luar Jabodetabek - Hanya Artificial / Snack / Uang</option></select>
+<div id="kota-luar-wrap" style="display:none">
+<label class="text-xs font-bold">📍 Pilih Wilayah Kamu (Ongkir Per Provinsi - Murah!):</label>
+<select id="wilayah-luar" onchange="updateCart()" class="w-full border border-[#FF8FAB] p-2.5 rounded-xl text-sm mb-2 bg-white">
+<option value="15000">Jawa Barat - Bandung, Cimahi - Rp 15.000</option>
+<option value="20000">Jawa Tengah - Semarang, Solo, Kudus - Rp 20.000</option>
+<option value="20000">DI Yogyakarta - Rp 20.000</option>
+<option value="25000">Jawa Timur - Surabaya, Malang, Kediri - Rp 25.000</option>
+<option value="30000">Bali - Denpasar, Badung - Rp 30.000</option>
+<option value="30000">NTB - Mataram, Lombok - Rp 30.000</option>
+<option value="35000">NTT - Kupang - Rp 35.000</option>
+<option value="30000">Sumatera Selatan - Palembang - Rp 30.000</option>
+<option value="30000">Lampung - Bandar Lampung - Rp 30.000</option>
+<option value="35000">Sumatera Utara - Medan - Rp 35.000</option>
+<option value="35000">Sumatera Barat - Padang - Rp 35.000</option>
+<option value="35000">Riau / Kepri - Pekanbaru, Batam - Rp 35.000</option>
+<option value="35000">Jambi / Bengkulu - Rp 35.000</option>
+<option value="40000">Aceh - Banda Aceh - Rp 40.000</option>
+<option value="35000">Kalimantan Barat - Pontianak - Rp 35.000</option>
+<option value="40000">Kalimantan Timur / Selatan / Tengah - Rp 40.000</option>
+<option value="40000">Kalimantan Utara - Rp 40.000</option>
+<option value="35000">Sulawesi Selatan - Makassar - Rp 35.000</option>
+<option value="40000">Sulawesi Utara / Tengah / Tenggara / Barat - Rp 40.000</option>
+<option value="45000">Gorontalo - Rp 45.000</option>
+<option value="40000">Maluku / Maluku Utara - Rp 40.000</option>
+<option value="50000">Papua / Papua Barat - Rp 50.000</option>
+</select>
+<p class="text-[11px] text-[#D96C8C] mb-2">*Ongkir per provinsi ya kak! Diskon Rp 10.000 motong ongkir, bukan motong harga bucket! Packing: Bubble + Kardus + FRAGILE.</p>
+</div>
+<div class="bg-white border border-dashed border-[#D96C8C] p-2.5 rounded-xl text-center mb-2">
+<p class="text-[12px] font-bold text-[#D96C8C]">🎉 DISKON ONGKIR Rp 10.000</p>
+<p class="text-[11px] text-[#7A5A4A]">Khusus Luar Jabodetabek - Masukin kode di bawah!</p>
+</div>
+<label class="text-xs font-bold">🎟️ Kode Promo:</label>
+<div class="flex gap-2 mb-1"><input id="promo" placeholder="Masukin kode: LAMALA10" class="flex-1 border p-2.5 rounded-xl text-sm bg-white"><button onclick="applyPromo()" class="bg-[#D96C8C] text-white px-4 rounded-xl text-xs font-bold">Pakai</button></div>
+<p id="promo-msg" class="text-[11px] text-[#D96C8C] font-bold mb-2">Kode: LAMALA10</p>
+<label class="text-xs font-bold">💳 Metode Pembayaran:</label>
+<select id="bayar" class="w-full border p-2.5 rounded-xl text-sm mb-3 bg-white"><option>Transfer BCA</option><option>Transfer Mandiri</option><option>DANA / OVO / GoPay</option><option>COD Bayar di Tempat</option></select>
+<div class="bg-white p-3 rounded-xl text-sm space-y-1 mb-3"><div class="flex justify-between"><span>Subtotal Bucket:</span><span id="subtotal">Rp 0</span></div><div class="flex justify-between"><span>Ongkir:</span><span id="ongkir-text">Rp 0</span></div><div class="flex justify-between text-green-600 font-bold"><span>Diskon Promo (Potong Ongkir):</span><span id="diskon-text">- Rp 0</span></div><div class="flex justify-between font-bold border-t pt-1"><span>Total Bayar:</span><span id="cart-total" class="text-[#D96C8C] text-base">Rp 0</span></div></div>
+<button onclick="checkout()" class="w-full bg-[#FF8FAB] text-white py-3 rounded-full text-sm font-bold pulse btn-shine">✅ Buat Pesanan & Checkout via WA →</button>
+<button onclick="closeCart()" class="w-full mt-2 bg-white border py-2.5 rounded-full text-sm">Lanjut Belanja</button>
+</div>
+</div>
+</div>
+<script>
+var FALLBACK="https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist";
+var cart=[];
+try{cart=JSON.parse(localStorage.getItem("lamala_cart")||"[]");}catch(e){cart=[];}
+var diskon=0;
+function saveCart(){try{localStorage.setItem("lamala_cart",JSON.stringify(cart));}catch(e){}}
+function addToCart(n,p,i){var e=null;for(var k=0;k<cart.length;k++){if(cart[k].name===n){e=cart[k];break;}}if(e){e.qty++;}else{cart.push({name:n,price:p,img:i,qty:1});}saveCart();updateCart();openCart();}
+function applyPromo(){
+var v=document.getElementById("promo").value.trim().toUpperCase();
+var ongVal=document.getElementById("ongkir").value;
+if(v==="LAMALA10"){
+if(ongVal!=="luar"){document.getElementById("promo-msg").innerText="Kode ini khusus untuk Luar Jabodetabek ya kak! Pilih Luar Jabodetabek dulu.";diskon=0;}
+else{document.getElementById("promo-msg").innerText="Yeay! Berhasil! Diskon Rp 10.000 motong ongkir kamu!";diskon=10000;}
+} else if(v===""){document.getElementById("promo-msg").innerText="Masukin kode LAMALA10 ya kak!";diskon=0;}
+else{document.getElementById("promo-msg").innerText="Kode salah, coba LAMALA10";diskon=0;}
+updateCart();
+}
+function updateCart(){
+var ov2=document.getElementById("ongkir").value;
+document.getElementById("kota-luar-wrap").style.display = ov2==="luar" ? "block" : "none";
+var totalQty=0;for(var i=0;i<cart.length;i++){totalQty+=cart[i].qty;}
+document.getElementById("cart-count").innerText=totalQty;
+document.getElementById("cart-count-modal").innerText=totalQty;
+var sub=0;for(var j=0;j<cart.length;j++){sub+=cart[j].price*cart[j].qty;}
+var ov=document.getElementById("ongkir").value;
+var ong=ov==="luar" ? parseInt(document.getElementById("wilayah-luar").value||15000) : parseInt(ov||0);
+if(ov!=="luar")diskon=0;
+var tot=sub+ong-diskon;if(tot<0)tot=0;
+document.getElementById("subtotal").innerText="Rp "+sub.toLocaleString("id-ID");
+document.getElementById("ongkir-text").innerText="Rp "+ong.toLocaleString("id-ID")+(ov==="luar"?" (Per Provinsi)":"");
+document.getElementById("diskon-text").innerText="- Rp "+diskon.toLocaleString("id-ID");
+document.getElementById("cart-total").innerText="Rp "+tot.toLocaleString("id-ID")+(ov==="luar"?" (Estimasi)":"");
+var c=document.getElementById("cart-items");
+if(cart.length===0){c.innerHTML='<p class="text-center text-gray-400 mt-10">Keranjang kosong</p>';return;}
+var html="";
+for(var x=0;x<cart.length;x++){
+html+='<div class="flex gap-3 bg-white p-3 rounded-xl border border-[#FFECEF]"><img src="'+cart[x].img+'" onerror="this.src=\''+FALLBACK+'\'" class="w-16 h-16 object-cover rounded-lg"><div class="flex-1"><p class="text-sm font-medium leading-snug">'+cart[x].name+'</p><p class="text-xs text-[#D96C8C]">Rp '+cart[x].price.toLocaleString("id-ID")+' x '+cart[x].qty+'</p><div class="flex gap-2 mt-2 items-center"><button onclick="cart['+x+'].qty++;saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">+</button><span class="text-sm">'+cart[x].qty+'</span><button onclick="cart['+x+'].qty--;if(cart['+x+'].qty<=0)cart.splice('+x+',1);saveCart();updateCart()" class="w-7 h-7 bg-white border rounded-full">-</button><button onclick="cart.splice('+x+',1);saveCart();updateCart()" class="text-xs text-red-500 ml-2">Hapus</button></div></div></div>';
+}
+c.innerHTML=html;
+}
+function openCart(){document.getElementById("cart-modal").style.display="flex";}
+function closeCart(){document.getElementById("cart-modal").style.display="none";}
+function customOrder(){
+var n=document.getElementById("c-nama").value;
+var hp=document.getElementById("c-hp").value;
+var j=document.getElementById("c-jenis").value;
+var b=document.getElementById("c-budget").value;
+var t=document.getElementById("c-tgl").value||"-";
+var c=document.getElementById("c-catatan").value||"-";
+if(!n||!hp){alert("Isi Nama & No WA dulu kak!");return;}
+var msg="Halo LAmala! Saya mau CUSTOM BUCKET\n\nNama: "+n+"\nWA: "+hp+"\nJenis: "+j+"\n"+b+"\nTgl Kirim: "+t+"\nCatatan: "+c+"\n\nMohon infonya ya kak!";
+window.open("https://wa.me/6283875905994?text="+encodeURIComponent(msg),"_blank");
+}
+function checkout(){
+if(cart.length===0){alert("Keranjang kosong!");return;}
+var nm=document.getElementById("nama").value;
+var al=document.getElementById("alamat").value;
+var hp=document.getElementById("hp").value;
+var tg=document.getElementById("tgl").value||"-";
+var ongSel=document.getElementById("ongkir");
+var ongText=ongSel.options[ongSel.selectedIndex].text;
+var ongVal=ongSel.value;
+var kotaLuar=document.getElementById("kota-luar") ? document.getElementById("kota-luar").value : "";
+var wilayahText="";
+if(ongVal==="luar"){
+var wSel=document.getElementById("wilayah-luar");
+wilayahText=wSel.options[wSel.selectedIndex].text;
+}
+var bayar=document.getElementById("bayar").value;
+if(!nm||!al||!hp){alert("Isi Nama, Alamat, No WA dulu kak!");return;}
+if(!ongVal){alert("Pilih ongkir dulu kak!");return;}
+var sub=0;for(var i=0;i<cart.length;i++){sub+=cart[i].price*cart[i].qty;}
+var ongNum=ongVal==="luar"?parseInt(document.getElementById("wilayah-luar").value||15000):parseInt(ongVal||0);
+var tot=sub+ongNum-diskon;if(tot<0)tot=0;
+var ps="Halo LAmala Florist!\n\nSaya mau CHECKOUT:\n";
+for(var k=0;k<cart.length;k++){ps+="• "+cart[k].name+" x"+cart[k].qty+" = Rp "+(cart[k].price*cart[k].qty).toLocaleString("id-ID")+"\n";}
+ps+="\n--- RINCIAN BIAYA ---\nSubtotal Bucket: Rp "+sub.toLocaleString("id-ID")+"\nOngkir: "+ongText + (ongVal==="luar" ? " - "+wilayahText+" - Kota: "+kotaLuar : "");
+if(ongVal!=="luar"){ps+=" - Rp "+ongNum.toLocaleString("id-ID")+"\nDiskon: Rp 0\nTOTAL BAYAR: Rp "+tot.toLocaleString("id-ID")+"\n\n";}
+else{ps+="\nOngkir Estimasi: Rp "+ongNum.toLocaleString("id-ID")+"\nDiskon Ongkir (LAMALA10): - Rp "+diskon.toLocaleString("id-ID")+"\nTOTAL BAYAR (Estimasi): Rp "+tot.toLocaleString("id-ID")+"\n\n";}
+ps+="--- DATA PEMESAN ---\nNama: "+nm+"\nWA: "+hp+"\nAlamat: "+al+"\nTgl Kirim: "+tg+"\nPembayaran: "+bayar+"\n\nMohon diproses ya kak!";
+window.open("https://wa.me/6283875905994?text="+encodeURIComponent(ps),"_blank");
+}
+updateCart();
+</script>
+</body>
+</html>
