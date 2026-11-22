@@ -226,7 +226,7 @@ var tot=sub+ong-diskon;if(tot<0)tot=0;
 document.getElementById("subtotal").innerText="Rp "+sub.toLocaleString("id-ID");
 document.getElementById("ongkir-text").innerText="Rp "+ong.toLocaleString("id-ID")+(ov==="luar"?" (Per Provinsi)":"");
 document.getElementById("diskon-text").innerText="- Rp "+diskon.toLocaleString("id-ID");
-document.getElementById("cart-total").innerText="Rp "+tot.toLocaleString("id-ID")+(ov==="luar"?" (Estimasi)":"");
+document.getElementById("cart-total").innerText="Rp "+tot.toLocaleString("id-ID");
 var c=document.getElementById("cart-items");
 if(cart.length===0){c.innerHTML='<p class="text-center text-gray-400 mt-10">Keranjang kosong</p>';return;}
 var html="";
@@ -271,7 +271,7 @@ ps+="Ongkir: "+ongText+"\nDiskon: Rp 0\nTOTAL BAYAR: Rp "+tot.toLocaleString("id
 }else{
 var wSel=document.getElementById("wilayah-luar");
 var wilayahText=wSel.options[wSel.selectedIndex].text;
-ps+="Ongkir: Luar Jabodetabek - "+wilayahText+"\nDiskon Ongkir (LAMALA10): - Rp "+diskon.toLocaleString("id-ID")+"\nTOTAL BAYAR (Estimasi): Rp "+tot.toLocaleString("id-ID")+"\n\n";
+ps+="Ongkir: Luar Jabodetabek - "+wilayahText+"\nDiskon Ongkir (LAMALA10): - Rp "+diskon.toLocaleString("id-ID")+"\nTOTAL BAYAR : Rp "+tot.toLocaleString("id-ID")+"\n\n";
 }
 ps+="--- DATA PEMESAN ---\nNama: "+nm+"\nWA: "+hp+"\nAlamat: "+al+"\nTgl Kirim: "+tg+"\nPembayaran: "+bayar+"\n\nMohon diproses ya kak!";
 window.open("https://wa.me/6283875905994?text="+encodeURIComponent(ps),"_blank");
