@@ -178,7 +178,7 @@ section,header{position:relative;z-index:1}
 <option value="40000">Maluku / Maluku Utara - Rp 40.000</option>
 <option value="50000">Papua / Papua Barat - Rp 50.000</option>
 </select>
-<p class="text-[11px] text-[#D96C8C] mb-2">*Ongkir per provinsi ya kak! Diskon Rp 10.000 motong ongkir, bukan motong harga bucket! Packing: Bubble + Kardus + FRAGILE.</p>
+
 </div>
 <div class="bg-white border border-dashed border-[#D96C8C] p-2.5 rounded-xl text-center mb-2">
 <p class="text-[12px] font-bold text-[#D96C8C]">🎉 DISKON ONGKIR Rp 10.000</p>
@@ -207,7 +207,7 @@ var v=document.getElementById("promo").value.trim().toUpperCase();
 var ongVal=document.getElementById("ongkir").value;
 if(v==="LAMALA10"){
 if(ongVal!=="luar"){document.getElementById("promo-msg").innerText="Kode ini khusus untuk Luar Jabodetabek ya kak! Pilih Luar Jabodetabek dulu.";diskon=0;}
-else{document.getElementById("promo-msg").innerText="Yeay! Berhasil! Diskon Rp 10.000 motong ongkir kamu!";diskon=10000;}
+else{document.getElementById("promo-msg").innerText="Yeay! Berhasil! Diskon Rp 10.000 potong ongkir kamu!";diskon=10000;}
 } else if(v===""){document.getElementById("promo-msg").innerText="Masukin kode LAMALA10 ya kak!";diskon=0;}
 else{document.getElementById("promo-msg").innerText="Kode salah, coba LAMALA10";diskon=0;}
 updateCart();
