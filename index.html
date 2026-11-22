@@ -104,7 +104,7 @@ section,header{position:relative;z-index:1}
 <div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><div class="relative"><img src="foto16.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" decoding="async" class="w-full h-48 object-cover" alt="Bucket Bunga Kawat Bulu"></div><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Bunga Kawat Bulu</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 135.000</p><p class="text-[10px] font-bold text-green-600 mt-1">✅ Bisa Kirim Luar</p><button onclick="addToCart('Bucket Bunga Kawat Bulu',135000,'foto16.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button></div></div>
 </div>
 </section>
-  <section id="custom" class="max-w-6xl mx-auto px-4 pb-14">
+<section id="custom" class="max-w-6xl mx-auto px-4 pb-14">
 <div class="rounded-3xl shadow-sm p-6 md:p-8 border border-white">
 <div class="bg-white/85 rounded-2xl p-5 fade-up">
 <div class="text-center mb-6"><h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">✨ Formulir Custom Bucket</h3><p class="text-sm text-[#7A5A4A] mt-2">Mau bucket sesuai request kamu? Isi form ini, langsung ke WA admin!</p></div>
@@ -255,14 +255,7 @@ var al=document.getElementById("alamat").value;
 var hp=document.getElementById("hp").value;
 var tg=document.getElementById("tgl").value||"-";
 var ongSel=document.getElementById("ongkir");
-var ongText=ongSel.options[ongSel.selectedIndex].text;
 var ongVal=ongSel.value;
-var kotaLuar=document.getElementById("kota-luar") ? document.getElementById("kota-luar").value : "";
-var wilayahText="";
-if(ongVal==="luar"){
-var wSel=document.getElementById("wilayah-luar");
-wilayahText=wSel.options[wSel.selectedIndex].text;
-}
 var bayar=document.getElementById("bayar").value;
 if(!nm||!al||!hp){alert("Isi Nama, Alamat, No WA dulu kak!");return;}
 if(!ongVal){alert("Pilih ongkir dulu kak!");return;}
@@ -271,13 +264,19 @@ var ongNum=ongVal==="luar"?parseInt(document.getElementById("wilayah-luar").valu
 var tot=sub+ongNum-diskon;if(tot<0)tot=0;
 var ps="Halo LAmala Florist!\n\nSaya mau CHECKOUT:\n";
 for(var k=0;k<cart.length;k++){ps+="• "+cart[k].name+" x"+cart[k].qty+" = Rp "+(cart[k].price*cart[k].qty).toLocaleString("id-ID")+"\n";}
-ps+="\n--- RINCIAN BIAYA ---\nSubtotal Bucket: Rp "+sub.toLocaleString("id-ID")+"\nOngkir: "+ongText + (ongVal==="luar" ? " - "+wilayahText+" - Kota: "+kotaLuar : "");
-if(ongVal!=="luar"){ps+=" - Rp "+ongNum.toLocaleString("id-ID")+"\nDiskon: Rp 0\nTOTAL BAYAR: Rp "+tot.toLocaleString("id-ID")+"\n\n";}
-else{ps+="\nOngkir Estimasi: Rp "+ongNum.toLocaleString("id-ID")+"\nDiskon Ongkir (LAMALA10): - Rp "+diskon.toLocaleString("id-ID")+"\nTOTAL BAYAR (Estimasi): Rp "+tot.toLocaleString("id-ID")+"\n\n";}
+ps+="\n--- RINCIAN BIAYA ---\nSubtotal Bucket: Rp "+sub.toLocaleString("id-ID")+"\n";
+if(ongVal!=="luar"){
+var ongText=ongSel.options[ongSel.selectedIndex].text;
+ps+="Ongkir: "+ongText+"\nDiskon: Rp 0\nTOTAL BAYAR: Rp "+tot.toLocaleString("id-ID")+"\n\n";
+}else{
+var wSel=document.getElementById("wilayah-luar");
+var wilayahText=wSel.options[wSel.selectedIndex].text;
+ps+="Ongkir: Luar Jabodetabek - "+wilayahText+"\nDiskon Ongkir (LAMALA10): - Rp "+diskon.toLocaleString("id-ID")+"\nTOTAL BAYAR (Estimasi): Rp "+tot.toLocaleString("id-ID")+"\n\n";
+}
 ps+="--- DATA PEMESAN ---\nNama: "+nm+"\nWA: "+hp+"\nAlamat: "+al+"\nTgl Kirim: "+tg+"\nPembayaran: "+bayar+"\n\nMohon diproses ya kak!";
 window.open("https://wa.me/6283875905994?text="+encodeURIComponent(ps),"_blank");
 }
 updateCart();
 </script>
 </body>
-</html>
+  </html>
