@@ -21,7 +21,6 @@ body::after{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background:r
 @keyframes popIn{0%{transform:scale(0.9);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes shine{0%{left:-100%}100%{left:200%}}
 @keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
-
 .fade-up{animation:fadeUp .8s ease both}
 .float-anim{animation:floatY 3s ease-in-out infinite;will-change:transform}
 .pop-in{animation:popIn .5s ease both}
@@ -32,7 +31,6 @@ body::after{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background:r
 .card-anim:hover img{transform:scale(1.08)}
 .btn-shine{position:relative;overflow:hidden;isolation:isolate}
 .btn-shine::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:shine 2.5s infinite;pointer-events:none}
-
 section,header{position:relative;z-index:1}
 .hero-title{padding-top:4px;padding-bottom:4px}
 #katalog{scroll-margin-top:80px}
@@ -52,7 +50,7 @@ section,header{position:relative;z-index:1}
 <a href="#beranda" class="hidden md:block text-[#7A5A4A]">Beranda</a>
 <a href="#katalog" class="hidden md:block text-[#7A5A4A]">Katalog</a>
 <a href="#custom" class="hidden md:block text-[#7A5A4A]">Custom Bucket</a>
-<a href="#lokasi" class="hidden md:block text-[#7A5A4A]">Lokasi</a>
+<a href="#kontak" class="hidden md:block text-[#7A5A4A]">Kontak</a>
 <button onclick="openCart()" class="bg-[#FF8FAB] text-white px-4 py-2 rounded-full pulse btn-shine">🛒 <span id="cart-count">0</span></button>
 </nav>
 </div>
@@ -117,7 +115,7 @@ section,header{position:relative;z-index:1}
 </div>
 </div>
 </section>
-<section id="lokasi" class="bg-[#FFF8F0] py-14 px-4 border-t border-[#FFC8DD]">
+<section id="Kontak" class="bg-[#FFF8F0] py-14 px-4 border-t border-[#FFC8DD]">
 <div class="max-w-6xl mx-auto">
 <div class="text-center mb-8"><h3 class="font-playfair text-3xl font-bold text-[#5C3A3A]">Lokasi Toko & Customer Service</h3><p class="text-sm text-[#A98A7A] mt-2">Bisa ambil di toko, kirim Jabodetabek, atau request luar daerah!</p></div>
 <div class="grid md:grid-cols-2 gap-6 bg-[#FFE5EC] p-6 rounded-3xl border border-[#FFC8DD]">
