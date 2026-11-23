@@ -54,14 +54,14 @@ section{position:relative;z-index:1}
 <a href="#custom" onclick="this.closest('details').removeAttribute('open')" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Custom Bucket</a>
 <a href="#lokasi" onclick="this.closest('details').removeAttribute('open')" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Lokasi</a>
 </nav>
- <button onclick="openCart()" class="bg-[#FF8FAB] text-white px-4 py-2 rounded-full pulse btn-shine">🛒 <span id="cart-count">0</span></button>
+ <button type="button" onclick="openCart()" class="bg-[#FF8FAB] text-white px-4 py-2 rounded-full pulse btn-shine">🛒 <span id="cart-count">0</span></button>
   <details class="md:hidden relative">
   <summary class="list-none text-2xl cursor-pointer px-2">☰</summary>
   <div class="absolute right-0 top-10 bg-white shadow-lg rounded-lg p-4 flex flex-col gap-3 w-48 z-50">
-<a href="#beranda" onclick="this.closest('details').removeAttribute('open');window.scrollTo({top:100,behavior:'smooth'});return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Beranda</a>
-<a href="#katalog" onclick="this.closest('details').removeAttribute('open');document.querySelector('#katalog').scrollIntoView({behavior:'smooth'});setTimeout(()=>window.scrollBy(0,-70),400);return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Katalog</a>
-<a href="#custom" onclick="this.closest('details').removeAttribute('open');document.querySelector('#custom').scrollIntoView({behavior:'smooth'});setTimeout(()=>window.scrollBy(0,-70),400);return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Custom Bucket</a>
-<a href="#lokasi" onclick="this.closest('details').removeAttribute('open');document.querySelector('#lokasi').scrollIntoView({behavior:'smooth'});setTimeout(()=>window.scrollBy(0,-70),400);return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Lokasi</a>
+<a href="#beranda" onclick="event.preventDefault(); this.closest('details').removeAttribute('open'); setTimeout(()=>{document.querySelector('#beranda').scrollIntoView({behavior:'smooth'}); setTimeout(()=>window.scrollBy(0,-70),400)},100); return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Beranda</a>
+<a href="#katalog" onclick="event.preventDefault(); this.closest('details').removeAttribute('open'); setTimeout(()=>{document.querySelector('#katalog').scrollIntoView({behavior:'smooth'}); setTimeout(()=>window.scrollBy(0,-70),400)},100); return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Katalog</a>
+<a href="#custom" onclick="event.preventDefault(); this.closest('details').removeAttribute('open'); setTimeout(()=>{document.querySelector('#custom').scrollIntoView({behavior:'smooth'}); setTimeout(()=>window.scrollBy(0,-70),400)},100); return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Custom Bucket</a>
+<a href="#lokasi" onclick="event.preventDefault(); this.closest('details').removeAttribute('open'); setTimeout(()=>{document.querySelector('#lokasi').scrollIntoView({behavior:'smooth'}); setTimeout(()=>window.scrollBy(0,-70),400)},100); return false;" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Lokasi</a>
   </div>
   </details>
 </div>
