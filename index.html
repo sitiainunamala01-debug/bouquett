@@ -36,7 +36,7 @@ section,header{position:relative;z-index:1}
 #katalog{scroll-margin-top:80px}
 #beranda{scroll-margin-top:80px}
 #custom{scroll-margin-top:80px}
-#lokasi{scroll-margin-top:80px}
+#kontak{scroll-margin-top:80px}
 </style>
 </head>
 <body>
@@ -53,6 +53,15 @@ section,header{position:relative;z-index:1}
 <a href="#kontak" class="hidden md:block text-[#7A5A4A]">Kontak</a>
 <button onclick="openCart()" class="bg-[#FF8FAB] text-white px-4 py-2 rounded-full pulse btn-shine">🛒 <span id="cart-count">0</span></button>
 </nav>
+  <details class="md:hidden relative">
+  <summary class="list-none text-2xl cursor-pointer px-2">☰</summary>
+  <div class="absolute right-0 top-10 bg-white shadow-lg rounded-lg p-4 flex flex-col gap-3 w-48 z-50">
+    <a href="#beranda">Beranda</a>
+    <a href="#katalog">Katalog</a>
+    <a href="#custom">Custom Buket</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+  </details>
 </div>
 </header>
 <section id="beranda" class="py-20 px-4">
