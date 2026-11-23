@@ -39,7 +39,6 @@ section{position:relative;z-index:1}
 #kontak{scroll-margin-top:80px}
 #lokasi{scroll-margin-top:80px}
  body{padding-top:64px}
- @media(max-width:768px){ header nav{display:none} }
 </style>
 </head>
 <body>
@@ -49,7 +48,7 @@ section{position:relative;z-index:1}
 <img src="logo.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-[#FFC8DD] bg-white float-anim" alt="L'Amala Florist">
 <div class="leading-none"><p class="font-playfair text-xl font-bold text-[#D96C8C]">L'Amala Florist</p><p class="text-[10px] text-[#A98A7A] tracking-widest">CURUG • TANGERANG</p></div>
 </a>
-<nav class="flex gap-4 items-center text-sm">
+<nav class="hidden md:flex gap-4 items-center text-sm">
 <a href="#beranda" onclick="this.closest('details').removeAttribute('open')" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Beranda</a>
 <a href="#katalog" onclick="this.closest('details').removeAttribute('open')" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Katalog</a>
 <a href="#custom" onclick="this.closest('details').removeAttribute('open')" class="block px-4 py-2 text-[#7A5A4A] hover:bg-[#F7EFEA] rounded-lg">Custom Bucket</a>
