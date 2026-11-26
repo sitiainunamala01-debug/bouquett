@@ -262,6 +262,17 @@ function openCheckout(){
   if(cart.length===0){alert("Keranjang kosong!");return;}
   document.getElementById("cart-view").style.display="none";
   document.getElementById("checkout-view").style.display="block";
+  var co=document.getElementById("checkout-view");
+  var old=document.getElementById("checkout-items");
+  if(old){old.remove();}
+  var h='<div id="checkout-items" style="background:#fff;padding:12px;border-radius:12px;margin-bottom:12px;border:1px solid #eee"><p style="font-weight:bold;margin-bottom:8px">Pesanan Kamu:</p>';
+  for(var i=0;i<cart.length;i++){
+    h+='<div style="display:flex;gap:10px;align-items:center;margin-bottom:8px"><img src="'+cart[i].img+'" style="width:50px;height:50px;object-fit:cover;border-radius:8px" onerror="this.src=\''+FALLBACK+'\'"><div style="flex:1"><p style="font-size:13px;font-weight:bold">'+cart[i].name+'</p><p style="font-size:12px;color:#888">'+cart[i].qty+'x - Rp '+cart[i].price.toLocaleString('id-ID')+'</p></div><b style="font-size:13px">Rp '+(cart[i].price*cart[i].qty).toLocaleString('id-ID')+'</b></div>';
+  }
+  h+='</div>';
+  var d=document.createElement("div");
+  d.innerHTML=h;
+  co.insertBefore(d.firstChild,co.firstChild);
 }
 function backToCart(){
   document.getElementById("checkout-view").style.display="none";
