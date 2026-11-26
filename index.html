@@ -215,7 +215,7 @@ function saveCart(){try{localStorage.setItem("lamala_cart",JSON.stringify(cart))
 function addToCart(n,p,i){var e=null;for(var k=0;k<cart.length;k++){if(cart[k].name===n){e=cart[k];break;}}if(e){e.qty++;}else{cart.push({name:n,price:p,img:i,qty:1});}saveCart();updateCart();openCart();}
  function buyNow(name, price, img){
   cart = [{name:name, price:price, img:img, qty:1}];
-  saveCart(); renderCart(); openCheckout();
+  saveCart(); updateCart(); openCart(); openCheckout();
  }
 function applyPromo(){
 var v=document.getElementById("promo").value.trim().toUpperCase();
