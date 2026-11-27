@@ -241,6 +241,7 @@ var ong=ov==="luar" ? parseInt(document.getElementById("wilayah-luar").value||15
 if(ov!=="luar")diskon=0;
 var suratFee=document.getElementById("surat").checked ? 5000 : 0;var tot=sub+ong-diskon+suratFee;if(tot<0)tot=0;
 document.getElementById("subtotal").innerText="Rp "+sub.toLocaleString("id-ID");
+ var sb=document.getElementById("suratBox");if(sb)sb.style.display=suratFee?"block":"none";
 document.getElementById("ongkir-text").innerText="Rp "+ong.toLocaleString("id-ID")+(ov==="luar"?" (Per Provinsi)":"");
 document.getElementById("diskon-text").innerText="- Rp "+diskon.toLocaleString("id-ID");
 document.getElementById("cart-total").innerText="Rp "+tot.toLocaleString("id-ID");
@@ -304,7 +305,7 @@ if(!nm||!al||!hp){alert("Isi Nama, Alamat, No WA dulu kak!");return;}
 if(!ongVal){alert("Pilih ongkir dulu kak!");return;}
 var sub=0;for(var i=0;i<cart.length;i++){sub+=cart[i].price*cart[i].qty;}
 var ongNum=ongVal==="luar"?parseInt(document.getElementById("wilayah-luar").value||15000):parseInt(ongVal||0);
-var suratFee=document.getElementById("surat").checked ? 5000 : 0;var tot=sub+ongNum-diskon+suratFee;if(tot<0)tot=0;
+var suratEl=document.getElementById("suratCheck")||document.getElementById("surat");var suratFee=suratEl&&suratEl.checked?5000:0;var diskonVal=(typeof diskon!=="undefined")?diskon:0;var tot=sub+ongNum-diskonVal+suratFee;
 var ps="Halo LAmala Florist!\n\nSaya mau CHECKOUT:\n";
 for(var k=0;k<cart.length;k++){ps+="• "+cart[k].name+" x"+cart[k].qty+" = Rp "+(cart[k].price*cart[k].qty).toLocaleString("id-ID")+"\n";}
 ps+="\n--- RINCIAN BIAYA ---\nSubtotal Bucket: Rp "+sub.toLocaleString("id-ID")+"\n";
@@ -314,9 +315,9 @@ ps+="Ongkir: "+ongText+"\nDiskon: Rp 0\nTOTAL BAYAR: Rp "+tot.toLocaleString("id
 }else{
 var wSel=document.getElementById("wilayah-luar");
 var wilayahText=wSel.options[wSel.selectedIndex].text;
-ps+="Ongkir: Luar Jabodetabek - "+wilayahText+"\nDiskon Ongkir (LAMALA10): - Rp "+diskon.toLocaleString("id-ID")+"\nTOTAL BAYAR : Rp "+tot.toLocaleString("id-ID")+"\n\n";
+ps+="Ongkir: Luar Jabodetabek - "+wilayahText+"\nDiskon Ongkir (LAMALA10): - Rp "+diskonVal.toLocaleString("id-ID")+"\nTOTAL BAYAR : Rp "+tot.toLocaleString("id-ID")+"\n\n";
 }
- if(document.getElementById("surat").checked){ps+="\n--- SURAT UCAPAN ---\n"+document.getElementById("isiSurat").value+"\n";}
+ if(suratEl&&suratEl.checked){ps+="\n--- SURAT UCAPAN ---\n"+document.getElementById("isiSurat").value+"\n";}
 ps+="--- DATA PEMESAN ---\nNama: "+nm+"\nWA: "+hp+"\nAlamat: "+al+"\nTgl Kirim: "+tg+"\nPembayaran: "+bayar+"\n\nMohon diproses ya kak!";
 window.open("https://wa.me/6283875905994?text="+encodeURIComponent(ps),"_blank");
 }
