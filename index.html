@@ -214,7 +214,7 @@ var cart=[];
 try{cart=JSON.parse(localStorage.getItem("lamala_cart")||"[]");}catch(e){cart=[];}
 var diskon=0;
 function saveCart(){try{localStorage.setItem("lamala_cart",JSON.stringify(cart));}catch(e){}}
-function addToCart(n,p,i){var e=null;for(var k=0;k<cart.length;k++){if(cart[k].name===n){e=cart[k];break;}}if(e){e.qty++;}else{cart.push({name:n,price:p,img:i,qty:1});}saveCart();updateCart();openCart();}
+function addToCart(n,p,i){var e=null;for(var k=0;k<cart.length;k++){if(cart[k].name===n){e=cart[k];break;}}if(e){e.qty++;}else{cart.push({name:n,price:p,img:i,qty:1});}saveCart();updateCart();}
  function buyNow(name, price, img){
   cart = [{name:name, price:price, img:img, qty:1}];
   saveCart(); updateCart(); openCart(); openCheckout();
