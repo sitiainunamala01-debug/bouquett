@@ -110,6 +110,24 @@ section{position:relative;z-index:1}
 <div class="card-anim rounded-2xl overflow-hidden shadow-sm border border-[#FFC8DD]"><div class="relative"><img src="foto16.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE5EC/D96C8C?text=LAmala+Florist'" loading="lazy" decoding="async" class="w-full h-48 object-cover" alt="Bucket Uang + Bunga"></div><div class="p-3"><h4 class="text-sm font-semibold leading-snug min-h-[40px] text-[#5C3A3A]">Bucket Uang + Bunga</h4><p class="font-bold text-[#D96C8C] text-sm">Rp 450.000</p><p class="text-[10px] font-bold text-green-600 mt-1">Bisa Kirim Luar</p><button onclick="addToCart('Bucket Uang + Bunga',450000,'foto16.jpg')" class="mt-2 w-full bg-[#FF8FAB] text-white py-2 rounded-full text-xs btn-shine">+ Keranjang</button><button onclick="buyNow('Bucket Uang + Bunga',450000,'foto16.jpg')" class="mt-2 w-full bg-white text-[#D96C8C] border border-[#FF8FAB] py-2 rounded-full text-xs font-bold">Beli Sekarang</button></div></div>
 </div>
 </section>
+<section id="ulasan" class="max-w-6xl mx-auto px-4 py-6">
+<div class="bg-white p-4 rounded-2xl mb-4 shadow-sm">
+  <h3 class="font-bold text-lg mb-1">⭐ Ulasan Pembeli</h3>
+  <p class="text-xs text-gray-500 mb-3">Lihat kata mereka yang udah order!</p>
+  <div id="list-ulasan" class="space-y-3 mb-4"></div>
+  <div class="border-t pt-3">
+    <p class="text-xs font-bold mb-2">Kasih Ulasan Yuk:</p>
+    <input id="nama-ulasan" placeholder="Nama kamu..." class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white">
+    <select id="bintang-ulasan" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white">
+      <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ - Suka Banget!</option>
+      <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ - Bagus</option>
+      <option value="⭐⭐⭐">⭐⭐⭐ - Lumayan</option>
+    </select>
+    <textarea id="isi-ulasan" placeholder="Bucketnya gimana kak? Lucu? Cepet sampenya?" class="w-full border p-2.5 rounded-xl text-sm mb-2 bg-white"></textarea>
+    <button onclick="kirimUlasan()" class="w-full bg-[#D96C8C] text-white py-2.5 rounded-xl font-bold text-sm">Kirim Ulasan 💖</button>
+  </div>
+</div>
+</section>
 <section id="custom" class="max-w-6xl mx-auto px-4 pb-14">
 <div class="rounded-3xl shadow-sm p-6 md:p-8 border border-white">
 <div class="bg-white/85 rounded-2xl p-5 fade-up">
@@ -300,6 +318,29 @@ if(!n||!hp){alert("Isi Nama & No WA dulu kak!");return;}
 var msg="Halo LAmala! Saya mau CUSTOM BUCKET\n\nNama: "+n+"\nWA: "+hp+"\nJenis: "+j+"\n"+b+"\nTgl Kirim: "+t+"\nCatatan: "+c+"\n\nMohon infonya ya kak!";
 window.open("https://wa.me/6283875905994?text="+encodeURIComponent(msg),"_blank");
 }
+ function kirimUlasan(){
+  let nama = document.getElementById('nama-ulasan').value || 'Anonim';
+  let bintang = document.getElementById('bintang-ulasan').value;
+  let isi = document.getElementById('isi-ulasan').value;
+  if(!isi){ alert('Isi dulu ulasannya ya kak!'); return; }
+  let list = JSON.parse(localStorage.getItem('ulasan') || '[]');
+  list.unshift({nama, bintang, isi});
+  localStorage.setItem('ulasan', JSON.stringify(list));
+  document.getElementById('isi-ulasan').value = '';
+  tampilUlasan();
+}
+function tampilUlasan(){
+  let list = JSON.parse(localStorage.getItem('ulasan') || '[]');
+  if(list.length==0){
+    list = [
+      {nama:'Sinta, Tangerang', bintang:'⭐⭐⭐⭐⭐', isi:'Bucketnya lucu banget! Pacar aku suka, pengiriman cepet!'},
+      {nama:'Putri, Jakarta', bintang:'⭐⭐⭐⭐⭐', isi:'Snacknya lengkap, packaging rapi, recommended!'},
+      {nama:'Ayu, Bekasi', bintang:'⭐⭐⭐⭐', isi:'Udah 2x order, selalu puas. Adminnya ramah banget!'}
+    ];
+  }
+  document.getElementById('list-ulasan').innerHTML = list.map(u=>`<div class="bg-pink-50 p-3 rounded-xl text-sm"><b>${u.nama}</b> <span>${u.bintang}</span><p class="text-gray-700 mt-1">${u.isi}</p></div>`).join('');
+}
+tampilUlasan();
 function checkout(){
 if(cart.length===0){alert("Keranjang kosong!");return;}
 var nm=document.getElementById("nama").value;
